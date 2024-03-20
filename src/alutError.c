@@ -7,10 +7,12 @@ void
 _alutSetError (ALenum err)
 {
   /* print a message to stderr if ALUT_DEBUG environment variable is defined */
+#ifndef __PROSPERO__
   if (getenv ("ALUT_DEBUG"))
     {
       fprintf (stderr, "ALUT error: %s\n", alutGetErrorString (err));
     }
+#endif
 
   if (lastError == ALUT_ERROR_NO_ERROR)
     {

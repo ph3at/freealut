@@ -7,6 +7,9 @@
 #elif defined(__APPLE__)
 #include <OpenAL/alc.h>
 #include <OpenAL/al.h>
+#elif defined(__PROSPERO__) && !defined(ALUT_BUILD_LIBRARY)
+#include "al.h"
+#include "alc.h"
 #else
 #include <AL/al.h>
 #include <AL/alc.h>
@@ -16,7 +19,7 @@
 extern "C" {
 #endif
 
-#if defined(_WIN32) && !defined(_XBOX)
+#if (defined(_WIN32) && !defined(_XBOX)) || defined(__PROSPERO__)
  #if defined (ALUT_BUILD_LIBRARY)
   #define ALUT_API __declspec(dllexport)
  #else

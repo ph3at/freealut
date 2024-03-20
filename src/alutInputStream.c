@@ -13,7 +13,6 @@
 #define stat(p,b) _stat((p),(b))
 #define structStat struct _stat
 #else
-#error No stat-like function on this platform
 #endif
 
 struct InputStream_struct
@@ -32,6 +31,9 @@ struct InputStream_struct
  * The functions below know the internal InputStream representation.
  ****************************************************************************/
 
+#ifdef __PROSPERO__
+InputStream* _alutInputStreamConstructFromFile(const char* fileName) { return NULL; }
+#else
 InputStream *
 _alutInputStreamConstructFromFile (const char *fileName)
 {
@@ -74,6 +76,7 @@ _alutInputStreamConstructFromFile (const char *fileName)
   stream->u.fileDescriptor = fileDescriptor;
   return stream;
 }
+#endif
 
 InputStream *
 _alutInputStreamConstructFromMemory (const ALvoid *data, size_t length)

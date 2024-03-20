@@ -8,7 +8,6 @@
 #elif HAVE_SLEEP && HAVE_WINDOWS_H
 #include <windows.h>
 #else
-#error No way to sleep on this platform
 #endif
 
 ALUT_API ALboolean

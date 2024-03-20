@@ -448,7 +448,7 @@ ALUT_APIENTRY alutLoadWAVFile (ALbyte *fileName, ALenum *format, void **data,
 
   /* Don't do an _alutSanityCheck () because it's not required in ALUT 0.x.x */
 
-  stream = _alutInputStreamConstructFromFile (fileName);
+  stream = _alutInputStreamConstructFromFile ((const char*)fileName);
   *data = _alutLoadMemoryFromInputStream (stream, format, size, &freq);
   if (*data == NULL)
     {
